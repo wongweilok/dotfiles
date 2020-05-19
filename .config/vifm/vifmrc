@@ -1,0 +1,35 @@
+set vicmd=$EDITOR
+
+colorscheme wayloque
+
+map <C-o> <C-w>o
+map <C-s> <C-w>s
+map <C-v> <C-w>v
+
+map E :!$EDITOR %c<CR>
+map bg :!setWallpaper %f &<CR>
+
+" Directory
+fileview */ tree %c -L 1 --dirsfirst
+fileview ../ tree %c -L 1 --dirsfirst
+
+" HTML
+filextype *.html,*.htm.*xml brave %f 2>/dev/null &
+
+" Image
+fileviewer *.jpg,*.jpeg,*.png,*.ico vifmimg draw %px %py %pw %ph %c %pc vifmimg clear
+filextype *.jpg,*.jpeg,*.png,*.ico,*.gif sxiv %f 2>/dev/null &
+
+" PDF file
+fileviewer *.pdf vifmimg pdfpreview %px %py %pw %ph %c %pc vifmimg clear
+filextype *.pdf,*.ps zathura %f 2>/dev/null &
+
+" Manual
+filetype *.[1-8] man ./%c
+
+" Music and Video files
+fileviewer *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.webm,*.wav,*mp3,*.flac file
+filetype *.wav,*.mp3,*.flac mpv --no-audio-display %c
+filextype *.avi,*.mp4,*.wmv,*.mkv,*.mpg,*.mpeg,*.webm mpv %c 2>/dev/null &,
+
+set vifminfo=dhistory,chistory,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks

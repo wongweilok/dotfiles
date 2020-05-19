@@ -1,0 +1,5 @@
+#!/bin/sh
+
+killall -q polybar
+
+polybar mybar -c ~/.config/polybar/config

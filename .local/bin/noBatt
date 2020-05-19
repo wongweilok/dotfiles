@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# A custom script for polybar to show no battery status
+# when the battery is detached.
+
+if [ $(ls /sys/class/power_supply/ | wc -l) == 1 ]; then
+	echo " No Battery"
+fi
+
