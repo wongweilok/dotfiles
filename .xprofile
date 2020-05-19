@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Runs following scripts
+setWallpaper & 			# Wallpaper changing script
+xcompmgr & 			# Provide transparency
+dunst & 			# Notification service
+xset r rate 300 50 &
+unclutter & 			# Hide mouse when idle
+loadICC & 			# Load ICC profile
+
+# Greeting message
+notify-send -i ~/Downloads/tux.png "Welcome back to Linux" "$(date +'%A ~ %d %B %Y')" -t 10000
