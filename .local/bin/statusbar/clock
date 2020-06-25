@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Just output datetime with custom format.
+
+date '+  %Y %b %d (%a) %I:%M %p'
