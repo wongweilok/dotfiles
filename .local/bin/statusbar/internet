@@ -4,6 +4,6 @@
 # Output disconnected if not connected to any Wifi.
 
 case "$(cat /sys/class/net/w*/operstate)" in
-	down)	echo "  Disconnected " ;;
-	up) 	awk '/^\s*w/ { print " ", int($3 * 100 / 70) "% " }' /proc/net/wireless ;;
+	down)	echo " Disconnected" ;;
+	up) 	awk '/^\s*w/ { print " ", int($3 * 100 / 70) "%" }' /proc/net/wireless ;;
 esac
