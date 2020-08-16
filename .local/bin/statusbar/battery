@@ -4,17 +4,17 @@
 # Output no battery when battery is detached.
 
 if [ $(ls /sys/class/power_supply/ | wc -l) == 1 ]; then
-	echo "  No Battery "
+	echo " No Battery"
 else
 	for x in /sys/class/power_supply/BAT?/capacity;
 	do
 		case "$(cat $x)" in
-			100|9[0-9])	echo "  $(cat $x)% " ;;
-			8[0-9]|7[0-9])	echo "  $(cat $x)% " ;;
-			6[0-9]|5[0-9])	echo "  $(cat $x)% " ;;
-			4[0-9]|3[0-9])	echo "  $(cat $x)% " ;;
-			2[0-9]|1[0-9])	echo "  $(cat $x)% " ;;
-			*)		echo "  $(cat $x)% " ;;
+			100|9[0-9])	echo " $(cat $x)%" ;;
+			8[0-9]|7[0-9])	echo " $(cat $x)%" ;;
+			6[0-9]|5[0-9])	echo " $(cat $x)%" ;;
+			4[0-9]|3[0-9])	echo " $(cat $x)%" ;;
+			2[0-9]|1[0-9])	echo " $(cat $x)%" ;;
+			*)		echo " $(cat $x)%" ;;
 		esac
 	done
 fi
