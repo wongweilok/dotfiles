@@ -1,9 +1,0 @@
-#!/bin/sh
-
-option=$(printf "Cancel\\nShutdown\\nReboot" | dmenu -i -p "Power Option:" -sb darkred)
-
-case "$option" in
-	"Cancel") exit ;;
-	"Shutdown") sudo shutdown -h now ;;
-	"Reboot") sudo reboot ;;
-esac
