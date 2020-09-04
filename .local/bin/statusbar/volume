@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Status bar script that outputs the volume level.
-
-amixer get Master | tail -n 1 | awk '{print $6 $5}' | sed "s/\[on\]//;s/\[off\]//;s/\[/ /;s/\]//"
