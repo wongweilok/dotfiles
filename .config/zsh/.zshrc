@@ -1,6 +1,6 @@
 # Enable colors and change prompt colors:
 autoload -U colors && colors
-PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[blue]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[green]%}%n@%M:%{$fg[blue]%}%~%{$reset_color%}$%b "
 
 # Set history directory
 HISTSIZE=100000
@@ -57,4 +57,4 @@ alias \
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Load zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
