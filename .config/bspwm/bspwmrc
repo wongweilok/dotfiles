@@ -1,16 +1,24 @@
 #!/bin/sh
 
-sxhkd &
-launch_polybar &
-xsetroot -cursor_name left_ptr &	# Set cursor to pointer style
-
 bspc rule -r "*"
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+# Autostart
+sxhkd &
+launch_polybar &
+xsetroot -cursor_name left_ptr	# Set cursor to pointer style
 
+# Monitor workspaces
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+# Bspwm configuration
 bspc config border_width         2
-bspc config window_gap           5
+bspc config window_gap          10
 bspc config top_padding		20
+bspc config split_ratio	      0.55
+
 bspc config focus_follows_pointer true
+
+bspc config automatic_scheme spiral
+bspc config initial_polarity first_child
 
 bspc config focused_border_color 	"#458588"
