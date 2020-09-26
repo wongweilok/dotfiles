@@ -2,6 +2,6 @@
 
 # A script to set wallpaper
 
-[ ! -z "$1" ] && cp "$1" ~/.local/share/wallpaper.png && notify-send -i "$HOME/.config/wall.png" "Wallpaper changed."
+[ ! -z "$1" ] && cp "$1" ~/.local/share/wallpaper.png && notify-send -i "$HOME/.local/share/wallpaper.png" "Wallpaper changed."
 
 xwallpaper --zoom ~/.local/share/wallpaper.png

@@ -8,5 +8,5 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=fcitx
 
 # Start bspwm
-#exec bspwm
-ssh-agent dwm
+exec bspwm
+#ssh-agent dwm
