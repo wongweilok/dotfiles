@@ -17,19 +17,21 @@
 ;==========================================================
 
 [colors]
-black = #282828
+black = #1d2021
 darkred = #cc241d
 darkblue = #458588
 darkgreen = #98971a
 darkyellow = #d79921
 darkmagenta = #b16286
 darkcyan = #689d6a
+darkorange = #d65d0e
 red = #fb4934
 blue = #83a598
 green = #b8bb26
 yellow = #fabd2f
 magenta = #d3869b
 cyan = #8ec07c
+orange = #fe8019
 gray = #928374
 lightgray = #a89984
 white = #ebdbb2
@@ -69,11 +71,11 @@ font-9 = Noto Sans CJK TC:size=8;1
 
 modules-left = dwm
 modules-center = mpd
-modules-right = arrow3 wlan arrow2 pulseaudio arrow1 battery nobattery arrow2 date arrow1
+modules-right = arrowRed wlan arrowYellow pulseaudio arrowGreen battery nobattery arrowBlue date arrowCyan
 
 tray-position = right
 tray-padding = 0
-;tray-background = #0063ff
+tray-background = ${colors.darkcyan}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -178,12 +180,13 @@ label-empty-padding = 1
 type = internal/mpd
 format-online = <label-song>  <label-time>
 format-online-padding = 1
-format-online-background = ${colors.darkblue}
+format-online-background = ${colors.cyan}
 
-label-song =  %artist% - %title%
+label-song = %artist% - %title%
 label-song-maxlen = 70
 label-song-ellipsis = true
 
+format-playing-foreground = ${colors.black}
 format-paused-foreground = ${colors.gray}
 
 [module/wlan]
@@ -192,11 +195,13 @@ interface = wlo1
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-background = ${colors.darkblue}
+format-connected-background = ${colors.darkred}
+format-connected-foreground = ${colors.black}
 label-connected =  %signal%%
 
 format-disconnected = <label-disconnected>
-format-disconnected-background = ${colors.darkblue}
+format-disconnected-background = ${colors.darkred}
+format-disconnected-foreground = ${colors.black}
 label-disconnected =  Disconnected
 
 [module/date]
@@ -209,7 +214,8 @@ date-alt = %Y %b %d (%a)
 time = %I:%M %p
 time-alt = %H:%M:%S
 
-format-background = ${colors.blue}
+format-background = ${colors.darkblue}
+format-foreground = ${colors.foreground}
 
 label =  %date% %time%
 
@@ -218,13 +224,13 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 label-volume =  %percentage%%
-label-volume-foreground = ${colors.foreground}
-label-volume-background = ${colors.blue}
+label-volume-background = ${colors.darkyellow}
+label-volume-foreground = ${colors.black}
 
 format-muted = <label-muted>
 label-muted =  %percentage%%
-label-muted-foreground = ${colors.foreground}
-label-muted-background = ${colors.blue}
+label-muted-background = ${colors.darkyellow}
+label-muted-foreground = ${colors.black}
 
 ; Show PC's battery percentage
 [module/battery]
@@ -235,31 +241,31 @@ full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 label-charging = %percentage%%
-format-charging-foreground = ${colors.foreground}
-format-charging-background = ${colors.darkblue}
+format-charging-background = ${colors.darkgreen}
+format-charging-foreground = ${colors.black}
 
 format-discharging = <ramp-capacity> <label-discharging>
 label-discharging = %percentage%%
-format-discharging-foreground = ${colors.foreground}
-format-discharging-background = ${colors.darkblue}
+format-discharging-background = ${colors.darkgreen}
+format-discharging-foreground = ${colors.black}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground}
-format-full-background = ${colors.darkblue}
+format-full-background = ${colors.darkgreen}
+format-full-prefix-foreground = ${colors.black}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground}
+ramp-capacity-foreground = ${colors.black}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground}
+animation-charging-foreground = ${colors.black}
 animation-charging-framerate = 750
 
 ; Custom Script settings
@@ -269,29 +275,65 @@ type = custom/script
 exec = noBatt
 interval = 10000
 
-format-background = ${colors.darkblue}
+format-background = ${colors.darkgreen}
+format-foreground = ${colors.black}
 
 ; Additional appearance settings
 [module/arrow1]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkblue}
-content-background = ${colors.blue}
+content-foreground = ${colors.darkgreen}
+content-background = ${colors.green}
 
 [module/arrow2]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.blue}
-content-background = ${colors.darkblue}
+content-foreground = ${colors.green}
+content-background = ${colors.darkgreen}
 
 [module/arrow3]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkblue}
+content-foreground = ${colors.darkgreen}
 content-background = ${colors.background}
+
+[module/arrowRed]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.darkred}
+content-background = ${colors.background}
+
+[module/arrowYellow]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.darkyellow}
+content-background = ${colors.darkred}
+
+[module/arrowGreen]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.darkgreen}
+content-background = ${colors.darkyellow}
+
+[module/arrowBlue]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.darkblue}
+content-background = ${colors.darkgreen}
+
+[module/arrowCyan]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.darkcyan}
+content-background = ${colors.darkblue}
 
 [settings]
 screenchange-reload = true
