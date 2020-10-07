@@ -2,4 +2,6 @@
 
 killall -q polybar
 
+sleep 2s
+
 polybar mybar -c ~/.config/polybar/config
