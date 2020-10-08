@@ -10,8 +10,6 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim'
-Plug 'jreybert/vimagit'
-Plug 'LukeSmithxyz/vimling'
 Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'vifm/vifm.vim'
@@ -48,15 +46,16 @@ set clipboard=unnamedplus
 	autocmd FileType python map <leader>c :terminal python % <CR>
 	autocmd FileType go map <leader>c :terminal go run % <CR>
 	autocmd FileType java map <leader>c :terminal javac % && java %< <CR>
+	autocmd FileType r map <leader>c :terminal Rscript % <CR>
 
-" Enable autocompletion:
+" Enable autocompletion.
 	set wildmode=longest,list,full
 
-" Disables automatic commenting on newline:
+" Disables automatic commenting on newline.
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+" Goyo plugin makes text more readable when writing prose.
+	map <leader>f :Goyo \| set linebreak<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -67,14 +66,7 @@ set clipboard=unnamedplus
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
 
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
-
-" Shortcutting split navigation, saving a keypress:
+" Shortcutting split navigation.
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
@@ -86,14 +78,14 @@ set clipboard=unnamedplus
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
-" Ensure files are read as what I want:
+" Ensure files are read as what I want.
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-" Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
+" Copy selected text to system clipboard.
 	vnoremap <C-c> "+y
 	map <C-p> "+P
 
@@ -103,10 +95,10 @@ set clipboard=unnamedplus
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
-" Restart sxhkd after config changed
+" Restart sxhkd after config changed.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
-" Navigating with guides
+" Navigating with guides.
 	inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
