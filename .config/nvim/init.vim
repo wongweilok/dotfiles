@@ -17,9 +17,9 @@ Plug 'bling/vim-airline'
 Plug 'vifm/vifm.vim'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
-set bg=light
 set go=a
 set mouse=a
 set nohlsearch
@@ -33,8 +33,14 @@ set clipboard=unnamedplus
 	set encoding=utf-8
 	set number relativenumber
 
+" Color settings
+	colorscheme gruvbox
+	hi Normal guibg=NONE ctermbg=NONE
+	set termguicolors
+
 " Vim airline settings
 	let g:airline_powerline_fonts = 1
+	let g:airline_theme='base16_gruvbox_dark_hard'
 
 " Custom compiler settings
 	autocmd FileType c map <leader>c :terminal gcc % -lm -o %< && ./%< <CR>
