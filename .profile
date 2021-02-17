@@ -16,6 +16,12 @@ export FILE="Vifm"
 export INPUTRC="$HOME/.config/inputrc"
 export ZDOTDIR="$HOME/.config/zsh"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export CARGO_HOME="$HOME/.local/share/cargo"
+export GOPATH="$HOME/.local/share/go"
+export RUSTUP_HOME="$HOME/.local/share/rustup"
+export GRADLE_USER_HOME="$HOME/.local/share/gradle"
+export ANDROID_SDK_HOME="$HOME/.config/android"
 
 # Setting for Java program to respect tiling window manager
 export _JAVA_AWT_WM_NONREPARENTING=1
