@@ -1,6 +1,12 @@
-# Enable colors and change prompt colors:
+# Enable git info settings to display git branch in prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:git*' formats "(%b)"
+precmd() { vcs_info }
+setopt prompt_subst
+
+# Enable colors and change prompt colors
 autoload -U colors && colors
-PS1="%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[blue]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[blue]%}]%{$reset_color%}$%b "
+PS1='%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[blue]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[green]%}${vcs_info_msg_0_}%{$fg[blue]%}]%{$reset_color%}$%b '
 
 # Set history directory
 HISTSIZE=100000
