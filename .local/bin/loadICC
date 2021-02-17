@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Set my preferred ICC profile and gamma
-
-xcalib -d :0 /usr/share/color/icc/HP_w2216_user.icm
-
-xgamma -gamma 0.8
-
-redshift -P -O 3000
