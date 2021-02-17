@@ -47,6 +47,7 @@ set clipboard=unnamedplus
 	autocmd FileType go map <leader>c :terminal go run % <CR>
 	autocmd FileType java map <leader>c :terminal javac % && java %< <CR>
 	autocmd FileType r map <leader>c :terminal Rscript % <CR>
+	autocmd FileType rust map <leader>c :terminal cargo run <CR>
 
 " Enable autocompletion.
 	set wildmode=longest,list,full

@@ -3,6 +3,7 @@
 # Add ~/.local/bin to $PATH environment variable
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/bin/statusbar"
+export PATH="$PATH:$HOME/go/bin"
 
 # Set default programs
 export EDITOR="nvim"
