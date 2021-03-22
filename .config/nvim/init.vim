@@ -13,7 +13,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'vifm/vifm.vim'
-Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
