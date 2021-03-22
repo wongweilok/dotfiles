@@ -5,13 +5,13 @@
 
 # Check if screenshots directory is available.
 # If not, a screenshots directory will be created.
-[ ! -d ~/screenshots/ ] && mkdir ~/screenshots/
+[ ! -d ~/Pictures/screenshots/ ] && mkdir ~/Pictures/screenshots/
 
 option=$(printf "full screen\\nsnip\\nfull screen (copy)\\nsnip (copy)" | dmenu -l 5 -i -p "Choose a screenshot:")
 
 case "$option" in
-	"full screen") maim ~/screenshots/screenshot-full-"$(date '+%y%m%d-%H%M%S').png" ;;
-	"snip") maim -s ~/screenshots/screenshot-snip-"$(date '+%y%m%d-%H%M%S').png" ;;
+	"full screen") maim ~/Pictures/screenshots/screenshot-full-"$(date '+%y%m%d-%H%M%S').png" ;;
+	"snip") maim -s ~/Pictures/screenshots/screenshot-snip-"$(date '+%y%m%d-%H%M%S').png" ;;
 	"full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
 	"snip (copy)") maim -s | xclip -selection clipboard -t image/png ;;
 esac

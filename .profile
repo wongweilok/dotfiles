@@ -3,7 +3,7 @@
 # Add ~/.local/bin to $PATH environment variable
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/bin/statusbar"
-export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/share/go/bin"
 
 # Set default programs
 export EDITOR="nvim"
@@ -15,6 +15,7 @@ export FILE="Vifm"
 # Config file directory clean up
 export INPUTRC="$HOME/.config/inputrc"
 export ZDOTDIR="$HOME/.config/zsh"
+export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export CARGO_HOME="$HOME/.local/share/cargo"
@@ -22,6 +23,7 @@ export GOPATH="$HOME/.local/share/go"
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export GRADLE_USER_HOME="$HOME/.local/share/gradle"
 export ANDROID_SDK_HOME="$HOME/.config/android"
+export ANDROID_SDK_ROOT="$HOME/.local/share/Android/Sdk"
 
 # Setting for Java program to respect tiling window manager
 export _JAVA_AWT_WM_NONREPARENTING=1
