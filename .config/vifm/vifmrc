@@ -1,6 +1,6 @@
 set vicmd=$EDITOR
 
-colorscheme wayloque
+colorscheme weilok
 
 map <C-o> <C-w>o
 map <C-s> <C-w>s
