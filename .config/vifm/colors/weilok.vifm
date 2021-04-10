@@ -7,11 +7,11 @@ highlight Socket cterm=bold ctermfg=magenta ctermbg=default
 highlight Device cterm=bold ctermfg=red ctermbg=default
 highlight Fifo cterm=bold ctermfg=cyan ctermbg=default
 highlight Executable cterm=bold ctermfg=green ctermbg=default
-highlight Selected cterm=bold ctermfg=yellow ctermbg=default
+highlight Selected cterm=bold,reverse ctermfg=yellow ctermbg=default
 highlight CurrLine cterm=bold,reverse ctermfg=default ctermbg=default
-highlight TopLine cterm=none ctermfg=black ctermbg=yellow
-highlight TopLineSel cterm=none ctermfg=black ctermbg=yellow
-highlight StatusLine cterm=bold ctermfg=black ctermbg=yellow
+highlight TopLine cterm=bold ctermfg=black ctermbg=green
+highlight TopLineSel cterm=bold ctermfg=black ctermbg=green
+highlight StatusLine cterm=bold ctermfg=green ctermbg=default
 highlight WildMenu cterm=underline,reverse ctermfg=white ctermbg=default
 highlight CmdLine cterm=none ctermfg=white ctermbg=default
 highlight ErrorMsg cterm=none ctermfg=red ctermbg=default
