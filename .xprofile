@@ -7,7 +7,7 @@ dunst & 			# Notification service
 xset r rate 300 50 &
 unclutter & 			# Hide mouse when idle
 nightlight			# Set color temperature
-dwmblocks &
+slstatus &
 
 # Greeting message
 notify-send -i ~/Downloads/tux.png "Welcome back to Linux" "$(date +'%A ~ %d %B %Y')" -t 10000
