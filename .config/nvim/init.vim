@@ -15,6 +15,8 @@ Plug 'bling/vim-airline'
 Plug 'vifm/vifm.vim'
 Plug 'ap/vim-css-color'
 Plug 'gruvbox-community/gruvbox'
+Plug 'udalov/kotlin-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 set go=a
@@ -47,6 +49,7 @@ set clipboard=unnamedplus
 	autocmd FileType java map <leader>c :terminal javac % && java %< <CR>
 	autocmd FileType r map <leader>c :terminal Rscript % <CR>
 	autocmd FileType rust map <leader>c :terminal cargo run <CR>
+	autocmd FileType kotlin map <leader>c :terminal kotlinc % -include-runtime -d %<.jar && java -jar %<.jar <CR>
 
 " Enable autocompletion.
 	set wildmode=longest,list,full
@@ -55,7 +58,7 @@ set clipboard=unnamedplus
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Goyo plugin makes text more readable when writing prose.
-	map <leader>f :Goyo \| set linebreak<CR>
+	map <leader>f :Goyo \| set linebreak \| hi Normal guibg=NONE ctermbg=NONE<CR>
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
