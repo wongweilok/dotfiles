@@ -5,7 +5,7 @@
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIERS=fcitx
+export XMODIFIERS=@im=fcitx
 
 # Start bspwm
 #exec bspwm
