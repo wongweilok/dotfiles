@@ -27,7 +27,6 @@ export ANDROID_SDK_ROOT="$HOME/.local/share/Android/Sdk"
 
 # Setting for Java program to respect tiling window manager
 export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export AWT_TOOLKIT=MToolkit
 
 # Manual page syntax highlighting
