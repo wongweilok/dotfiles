@@ -19,14 +19,14 @@
 [colors]
 black = #1d2021
 darkred = #cc241d
-darkblue = #458588
+darkblue = #076678
 darkgreen = #98971a
 darkyellow = #d79921
 darkmagenta = #b16286
 darkcyan = #689d6a
 darkorange = #d65d0e
 red = #fb4934
-blue = #83a598
+blue = #458588
 green = #b8bb26
 yellow = #fabd2f
 magenta = #d3869b
@@ -39,7 +39,7 @@ background = #282828
 foreground = #ebdbb2
 
 [bar/mybar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR}
 width = 100%
 height = 20
 ;offset-x = 1%
@@ -68,14 +68,15 @@ font-6 = Noto Sans CJK JP:size=8;1
 font-7 = Noto Sans CJK KR:size=8;1
 font-8 = Noto Sans CJK SC:size=8;1
 font-9 = Noto Sans CJK TC:size=8;1
+font-10 = Inconsolata Nerd Font:pixelsize=12;1
 
-modules-left = dwm
-modules-center = mpd
-modules-right = arrow3 wlan arrow2 pulseaudio arrow1 battery nobattery arrow2 date arrow1
+modules-left = archLogo arrowRight arrowRight2 arrowRight3 dwm
+modules-center =
+modules-right = arrow3 wlan arrow2 arrow1 pulseaudio arrow2 arrow1 battery nobattery arrow2 arrow1 date arrow2 arrow1
 
 tray-position = right
 tray-padding = 0
-tray-background = ${colors.darkblue}
+tray-background = ${colors.green}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -131,16 +132,16 @@ secondary-layout-symbol = [M]
 ;   %title%
 label-title = %title%
 label-title-padding = 1
-label-title-foreground = ${colors.foreground}
-label-title-maxlen = 30
+label-title-foreground = ${colors.orange}
+label-title-maxlen = 80
 
 ; Symbol of current layout
 ; Available tokens:
 ;   %symbol%
 label-layout = %symbol%
 label-layout-padding = 1
-label-layout-foreground = ${colors.foreground}
-label-layout-background = ${colors.darkblue}
+label-layout-foreground = ${colors.black}
+label-layout-background = ${colors.green}
 
 ; Text to show when currently focused window is floating
 label-floating = 
@@ -151,8 +152,8 @@ label-floating = 
 
 ; focused = Selected tag on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.darkblue}
-label-focused-underline =
+label-focused-background = ${colors.green}
+label-focused-foreground = ${colors.black}
 label-focused-padding = 1
 
 ; unfocused = Unselected tag on unselected monitor
@@ -161,8 +162,8 @@ label-unfocused-padding = 1
 
 ; visible = Unselected tag, but occupied tag on any monitor
 label-visible = %name%
-label-visible-background = ${colors.gray}
-label-visible-underline =
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.orange}
 label-visible-padding = 1
 
 ; urgent = Unselected tag with window that has urgency hint set
@@ -180,7 +181,7 @@ label-empty-padding = 1
 type = internal/mpd
 format-online = <label-song>  <label-time>
 format-online-padding = 1
-format-online-background = ${colors.darkgreen}
+format-online-background = ${colors.green}
 
 label-song =  %artist% - %title%
 label-song-maxlen = 70
@@ -192,21 +193,21 @@ format-paused-foreground = ${colors.gray}
 [module/wlan]
 type = internal/network
 interface = wlo1
-interval = 3.0
+interval = 5
 
 format-connected = <label-connected>
-format-connected-background = ${colors.darkblue}
-format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.green}
+format-connected-foreground = ${colors.black}
 label-connected =  %signal%%
 
 format-disconnected = <label-disconnected>
-format-disconnected-background = ${colors.darkblue}
-format-disconnected-foreground = ${colors.foreground}
+format-disconnected-background = ${colors.green}
+format-disconnected-foreground = ${colors.black}
 label-disconnected =  Disconnected
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 60
 
 date = %Y %b %d (%a)
 date-alt = %Y %b %d (%a)
@@ -214,8 +215,8 @@ date-alt = %Y %b %d (%a)
 time = %I:%M %p
 time-alt = %H:%M:%S
 
-format-background = ${colors.darkgreen}
-format-foreground = ${colors.foreground}
+format-background = ${colors.green}
+format-foreground = ${colors.black}
 
 label =  %date% %time%
 
@@ -224,13 +225,13 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 label-volume =  %percentage%%
-label-volume-background = ${colors.darkgreen}
-label-volume-foreground = ${colors.foreground}
+label-volume-background = ${colors.green}
+label-volume-foreground = ${colors.black}
 
 format-muted = <label-muted>
 label-muted =  %percentage%%
-label-muted-background = ${colors.darkgreen}
-label-muted-foreground = ${colors.foreground}
+label-muted-background = ${colors.green}
+label-muted-foreground = ${colors.black}
 
 ; Show PC's battery percentage
 [module/battery]
@@ -241,31 +242,31 @@ full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 label-charging = %percentage%%
-format-charging-background = ${colors.darkblue}
-format-charging-foreground = ${colors.foreground}
+label-charging-foreground = ${colors.black}
+format-charging-background = ${colors.green}
 
 format-discharging = <ramp-capacity> <label-discharging>
 label-discharging = %percentage%%
-format-discharging-background = ${colors.darkblue}
-format-discharging-foreground = ${colors.foreground}
+label-discharging-foreground = ${colors.black}
+format-discharging-background = ${colors.green}
 
 format-full-prefix = " "
-format-full-background = ${colors.darkblue}
-format-full-prefix-foreground = ${colors.foreground}
+format-full-background = ${colors.green}
+format-full-prefix-foreground = ${colors.black}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground}
+ramp-capacity-foreground = ${colors.black}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground}
+animation-charging-foreground = ${colors.black}
 animation-charging-framerate = 750
 
 ; Custom Script settings
@@ -275,65 +276,93 @@ type = custom/script
 exec = noBatt
 interval = 10000
 
-format-background = ${colors.darkblue}
-format-foreground = ${colors.foreground}
+format-background = ${colors.green}
+format-foreground = ${colors.black}
 
 ; Additional appearance settings
+[module/archLogo]
+type = custom/text
+content = "%{T11}  %{T-}"
+content-font = 2
+content-foreground = ${colors.blue}
+content-background = ${colors.green}
+
 [module/arrow1]
 type = custom/text
-content = "%{T2} %{T-}"
+content = "%{T2}%{T-}"
 content-font = 2
-content-foreground = ${colors.darkblue}
-content-background = ${colors.darkgreen}
+content-foreground = ${colors.green}
+content-background = #504945
 
 [module/arrow2]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkgreen}
-content-background = ${colors.darkblue}
+content-foreground = #504945
+content-background = ${colors.green}
 
 [module/arrow3]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkblue}
+content-foreground = ${colors.green}
+content-background = ${colors.background}
+
+[module/arrowRight]
+type = custom/text
+content = "%{T2}%{T-}"
+content-font = 2
+content-foreground = ${colors.green}
+content-background = #504945
+
+[module/arrowRight2]
+type = custom/text
+content = "%{T2}%{T-}"
+content-font = 2
+content-foreground = #504945
+content-background = ${colors.green}
+
+[module/arrowRight3]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.green}
 content-background = ${colors.background}
 
 [module/arrowRed]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkred}
+content-foreground = ${colors.red}
 content-background = ${colors.background}
 
 [module/arrowYellow]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkyellow}
-content-background = ${colors.darkred}
+content-foreground = ${colors.yellow}
+content-background = ${colors.red}
 
 [module/arrowGreen]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
-content-foreground = ${colors.darkgreen}
-content-background = ${colors.darkyellow}
+content-foreground = ${colors.green}
+content-background = ${colors.yellow}
 
 [module/arrowBlue]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
 content-foreground = ${colors.darkblue}
-content-background = ${colors.darkgreen}
+content-background = ${colors.darkcyan}
 
 [module/arrowCyan]
 type = custom/text
 content = "%{T2} %{T-}"
 content-font = 2
 content-foreground = ${colors.darkcyan}
-content-background = ${colors.darkblue}
+content-background = ${colors.green}
 
 [settings]
 screenchange-reload = true
