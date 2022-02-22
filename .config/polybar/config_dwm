@@ -60,7 +60,7 @@ module-margin-right = 0
 
 font-0 = mono:pixelsize=9;1
 font-1 = Inconsolata for Powerline:size=16;3
-font-2 = Noto Color Emoji:scale=10:style=Regular;2
+font-2 = JoyPixels:scale=10:style=Regular;2
 font-3 = Font Awesome 5 Free:style=Regular:pixelsize=8;1
 font-4 = Font Awesome 5 Free:style=Solid:pixelsize=8;1
 font-5 = Font Awesome 5 Brands:pixelsize=8;1
@@ -94,11 +94,19 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+format = <label>
+format-foreground = ${colors.orange}
+format-padding = 2
+
+label = %title%
+label-maxlen = 50
+
+label-empty = Desktop
 
 [module/dwm]
 type = internal/dwm
 format = <label-tags> <label-layout> <label-floating> <label-title>
+;format = <label-tags> <label-layout>
 ; Path to dwm socket (default: /tmp/dwm.sock)
 ; socket-path = /tmp/dwm.sock
 
@@ -133,7 +141,7 @@ secondary-layout-symbol = [M]
 label-title = %title%
 label-title-padding = 1
 label-title-foreground = ${colors.orange}
-label-title-maxlen = 80
+label-title-maxlen = 50
 
 ; Symbol of current layout
 ; Available tokens:
