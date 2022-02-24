@@ -10,7 +10,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
-export FILE="Vifm"
+export FILE="Lf"
 
 # Config file directory clean up
 export INPUTRC="$HOME/.config/inputrc"
