@@ -1,2 +1,24 @@
+# Images preview
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
+
+# Auto reload view on file changes
+set period 1
+
+# Enable border
+set drawbox true
+
+# Unmap default keybindings
+map d
+map y
+map c
+map w
+
+# Keybindings
+map C clear
+map V toggle
+map D delete
+map dd cut
+map <esc> unselect
+map yy copy
+map cw rename
