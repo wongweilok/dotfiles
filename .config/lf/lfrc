@@ -1,12 +1,21 @@
-# Images preview
-set previewer ~/.config/lf/preview
+# Common settings
+set previewer ~/.config/lf/preview	# Images preview
 set cleaner ~/.config/lf/cleaner
+set period 1				# Auto reload view on file changes
+set drawbox true			# Enable border
 
-# Auto reload view on file changes
-set period 1
+# Custom commands
+cmd open ${{
+	case $(file --mime-type "$(readlink -f $f)" -b) in
+		image/*) setsid -f sxiv $f;;
+		video/*) setsid -f mpv --quiet $f >/dev/null 2>&1;;
+		application/pdf) setsid -f zathura $f;;
+		text/*) $EDITOR $f;;
+		*) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+	esac
+}}
 
-# Enable border
-set drawbox true
+cmd setwall "$1"
 
 # Unmap default keybindings
 map d
@@ -22,3 +31,4 @@ map dd cut
 map <esc> unselect
 map yy copy
 map cw rename
+map bg $setWallpaper $f
