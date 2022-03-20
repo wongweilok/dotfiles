@@ -3,4 +3,4 @@
 # Just output datetime with custom format.
 
 clock=$(date '+ %Y %b %d (%a) %I:%M %p')
-echo "^c#d3869b^$clock ^d^"
+echo "^c#1d2021^^b#b8bb26^$clock ^d^"
