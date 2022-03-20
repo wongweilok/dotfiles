@@ -4,6 +4,7 @@
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/bin/statusbar"
 export PATH="$PATH:$HOME/.local/share/go/bin"
+export PATH="$PATH:$HOME/.local/share/cargo/bin"
 
 # Set default programs
 export EDITOR="nvim"
@@ -24,6 +25,9 @@ export RUSTUP_HOME="$HOME/.local/share/rustup"
 export GRADLE_USER_HOME="$HOME/.local/share/gradle"
 export ANDROID_SDK_HOME="$HOME/.config/android"
 export ANDROID_SDK_ROOT="$HOME/.local/share/Android/Sdk"
+
+# Java language server configs and plugins
+export JDTLS_HOME="$HOME/.local/share/nvim/lsp_servers/jdtls"
 
 # Setting for Java program to respect tiling window manager
 export _JAVA_AWT_WM_NONREPARENTING=1
