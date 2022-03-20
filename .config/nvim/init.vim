@@ -12,11 +12,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
-Plug 'vifm/vifm.vim'
 Plug 'ap/vim-css-color'
 Plug 'gruvbox-community/gruvbox'
 Plug 'udalov/kotlin-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
 set go=a
@@ -36,6 +38,9 @@ set clipboard=unnamedplus
 	colorscheme gruvbox
 	hi Normal guibg=NONE ctermbg=NONE
 	set termguicolors
+
+" C header file specific
+	let g:c_syntax_for_h = 1
 
 " Vim airline settings
 	let g:airline_powerline_fonts = 1
@@ -69,12 +74,6 @@ set clipboard=unnamedplus
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
 
-" Shortcutting split navigation.
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
-
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck %<CR>
 
@@ -105,3 +104,31 @@ set clipboard=unnamedplus
 	inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
+
+" LSP
+lua << EOF
+require'lspconfig'.jdtls.setup{}
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+
+local cmp = require 'cmp'
+cmp.setup {
+  mapping = {
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+  },
+  sources = {
+    { name = 'nvim_lsp' }
+  },
+}
+EOF
