@@ -8,4 +8,4 @@ case "$(cat /sys/class/net/w*/operstate)" in
 	up) 	internet=$(awk '/^\s*w/ { print "", int($3 * 100 / 70) "%" }' /proc/net/wireless) ;;
 esac
 
-echo "^c#8ec07c^$internet^d^"
+echo "^c#1d2021^^b#b8bb26^$internet ^d^"
