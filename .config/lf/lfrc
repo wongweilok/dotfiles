@@ -9,7 +9,7 @@ cmd open ${{
 	case $(file --mime-type "$(readlink -f $f)" -b) in
 		image/*) setsid -f sxiv $f;;
 		video/*) setsid -f mpv --quiet $f >/dev/null 2>&1;;
-		application/pdf) setsid -f zathura $f;;
+		application/pdf) setsid -f zathura $f 2>/dev/null;;
 		text/*) $EDITOR $f;;
 		*) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
 	esac

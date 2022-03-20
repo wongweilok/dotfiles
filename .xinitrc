@@ -7,6 +7,5 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-# Start bspwm
-#exec bspwm
+# Start window manager
 ssh-agent dwm
