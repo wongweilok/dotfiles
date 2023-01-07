@@ -3,18 +3,29 @@
 # Status bar script that outputs the battery percentage.
 # Output no battery when battery is detached.
 
+# Check charging status.
+c_symbol=""
+stat=$(cat /sys/class/power_supply/BAT0/status)
+
+case "$stat" in
+	Discharging)	c_symbol="" ;;
+	Charging)	c_symbol=" " ;;
+esac
+
+# Check if battery present.
+# Output battery percentage.
 if [ $(ls /sys/class/power_supply/ | wc -l) == 1 ]; then
 	echo "^c#1d2021^^b#b8bb26^ No Battery ^d^"
 else
 	for x in /sys/class/power_supply/BAT?/capacity;
 	do
 		case "$(cat $x)" in
-			100|9[0-9])	echo "^c#1d2021^^b#b8bb26^ $(cat $x)% ^d^" ;;
-			8[0-9]|7[0-9])	echo "^c#1d2021^^b#b8bb26^ $(cat $x)% ^d^" ;;
-			6[0-9]|5[0-9])	echo "^c#1d2021^^b#b8bb26^ $(cat $x)% ^d^" ;;
-			4[0-9]|3[0-9])	echo "^c#1d2021^^b#b8bb26^ $(cat $x)% ^d^" ;;
-			2[0-9]|1[0-9])	echo "^c#1d2021^^b#b8bb26^ $(cat $x)% ^d^" ;;
-			*)		echo "^c#1d2021^^b#b8bb26^ $(cat $x)% ^d^" ;;
+			100|9[0-9])	echo "^c#1d2021^^b#b8bb26^$c_symbol $(cat $x)% ^d^" ;;
+			8[0-9]|7[0-9])	echo "^c#1d2021^^b#b8bb26^$c_symbol $(cat $x)% ^d^" ;;
+			6[0-9]|5[0-9])	echo "^c#1d2021^^b#b8bb26^$c_symbol $(cat $x)% ^d^" ;;
+			4[0-9]|3[0-9])	echo "^c#1d2021^^b#b8bb26^$c_symbol $(cat $x)% ^d^" ;;
+			2[0-9]|1[0-9])	echo "^c#1d2021^^b#b8bb26^$c_symbol $(cat $x)% ^d^" ;;
+			*)		echo "^c#1d2021^^b#b8bb26^$c_symbol $(cat $x)% ^d^" ;;
 		esac
 	done
 fi
