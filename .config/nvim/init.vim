@@ -8,14 +8,12 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
-Plug 'gruvbox-community/gruvbox'
-Plug 'udalov/kotlin-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
