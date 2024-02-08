@@ -19,11 +19,6 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
-set go=a
-set mouse=a
-set nohlsearch
-set clipboard=unnamedplus
-
 " Basic settings
 	nnoremap c "_c
 	set nocompatible
@@ -31,20 +26,24 @@ set clipboard=unnamedplus
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
+	set go=a
+	set mouse=a
+	set nohlsearch
+	set clipboard=unnamedplus
 
 " Color settings
 	colorscheme gruvbox
 	hi Normal guibg=NONE ctermbg=NONE
 	set termguicolors
 
-" C header file specific
-	let g:c_syntax_for_h = 1
-
 " Vim airline settings
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme='base16_gruvbox_dark_hard'
 
-" Custom compiler settings
+" C header file specific
+	let g:c_syntax_for_h = 1
+
+" Custom commands for compiling source code / document
 	autocmd FileType c map <leader>c :terminal gcc % -lm -o %< && ./%< <CR>
 	autocmd FileType cpp map <leader>c :terminal g++ % -lm -o %< && ./%< <CR>
 	autocmd FileType python map <leader>c :terminal python % <CR>
@@ -54,51 +53,48 @@ set clipboard=unnamedplus
 	autocmd FileType rust map <leader>c :terminal cargo run <CR>
 	autocmd FileType kotlin map <leader>c :terminal kotlinc % -include-runtime -d %<.jar && java -jar %<.jar <CR>
 
-" Enable autocompletion.
+" Enable autocompletion
 	set wildmode=longest,list,full
 
-" Disables automatic commenting on newline.
+" Disables automatic commenting on newline
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Goyo plugin makes text more readable when writing prose.
+" Goyo plugin makes text more readable when writing prose
 	map <leader>f :Goyo \| set linebreak \| hi Normal guibg=NONE ctermbg=NONE<CR>
 
-" Spell-check set to <leader>o, 'o' for 'orthography':
+" Spell-check using dictionary, 'o' stands for 'orthography'
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+" Splits open at the bottom and right
 	set splitbelow splitright
 
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
 
-" Check file in shellcheck:
+" Check file in shellcheck
 	map <leader>s :!clear && shellcheck %<CR>
 
-" Replace all is aliased to S.
+" Replace all, is aliased to S
 	nnoremap S :%s//g<Left><Left>
 
-" Ensure files are read as what I want.
+" Ensure files are read as what I want
 	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-" Copy selected text to system clipboard.
+" Copy selected text to system clipboard
 	vnoremap <C-c> "+y
 	map <C-p> "+P
 
-" Automatically deletes all trailing whitespace on save.
+" Automatically deletes all trailing whitespace on save
 	autocmd BufWritePre * %s/\s\+$//e
 
-" Run xrdb whenever Xdefaults or Xresources are updated.
+" Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
-" Restart sxhkd after config changed.
-	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-
-" Navigating with guides.
+" Navigating with guides
 	inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
