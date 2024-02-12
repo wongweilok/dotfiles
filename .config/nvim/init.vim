@@ -52,6 +52,8 @@ call plug#end()
 	autocmd FileType r map <leader>c :terminal Rscript % <CR>
 	autocmd FileType rust map <leader>c :terminal cargo run <CR>
 	autocmd FileType kotlin map <leader>c :terminal kotlinc % -include-runtime -d %<.jar && java -jar %<.jar <CR>
+	autocmd FileType groff map <leader>c :!groff -ms % -T pdf > %<.pdf <CR>
+	autocmd FileType tex map <leader>c :!pdflatex % <CR>
 
 " Enable autocompletion
 	set wildmode=longest,list,full
