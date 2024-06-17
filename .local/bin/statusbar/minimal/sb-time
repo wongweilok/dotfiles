@@ -1,0 +1,4 @@
+#!/bin/sh
+
+time=$(date '+󰃶 %Y %b %d (%a) %I:%M %p')
+echo "^c#83a598^$time^d^"

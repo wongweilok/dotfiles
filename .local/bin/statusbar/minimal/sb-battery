@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Statusbar script - Battery
+
+# Check charging status
+c_icon=""
+stat=$(cat /sys/class/power_supply/BAT0/status)
+
+case "$stat" in
+	Discharging)	c_icon="" ;;
+	Charging)	c_icon=" " ;;
+esac
+
+bat_percent=$(cat /sys/class/power_supply/BAT0/capacity)
+
+# Output battery percentage
+if [ $(ls /sys/class/power_supply/ | wc -l) == 1 ]; then
+	echo " No Battery"
+else
+	for p in "$bat_percent";
+	do
+		case $p in
+			100|9[0-9])	bat_icon="󰁹" ;;
+			8[0-9]|7[0-9])	bat_icon="󰂁" ;;
+			6[0-9]|5[0-9])	bat_icon="󰁿" ;;
+			4[0-9]|3[0-9])	bat_icon="󰁽" ;;
+			2[0-9]|1[0-9])	bat_icon="󰁻" ;;
+			*)		bat_icon="󰂃" ;;
+		esac
+	done
+
+	echo "^c#fabd2f^$c_icon$bat_icon $bat_percent%^d^"
+fi
+
+if [ $battery_level -le 25 && $stat == "Discharging" ]; then
+	notify-send "ALERT: Low batter"
+fi
