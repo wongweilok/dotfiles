@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Statusbar script - Internet
+
+case "$(cat /sys/class/net/w*/operstate)" in
+	down)	internet=$(echo " Disconnected") ;;
+	up)	internet=$(awk '/^\s*w/ { print "", int($3 / 70 * 100) "%" }' /proc/net/wireless) ;;
+esac
+
+echo "^c#fb4934^$internet^d^"
