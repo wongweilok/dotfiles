@@ -1,0 +1,1 @@
+require("weilok.config.settings")
