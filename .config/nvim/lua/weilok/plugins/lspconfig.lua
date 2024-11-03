@@ -47,11 +47,14 @@ return {
 		-- Load mason-lspconfig
  		require("mason-lspconfig").setup({
 			handlers = {
+				-- Default setup for all language servers
 				function(server_name)
 					lspconfig[server_name].setup {
 						capabilities = capabilities
 					}
 				end,
+
+				-- Custom setup for lua_ls
 				["lua_ls"] = function()
 					lspconfig["lua_ls"].setup({
 						capabilities = capabilities,
@@ -63,7 +66,7 @@ return {
 							},
 						},
 					})
-				end
+				end,
 			},
 		})
 
