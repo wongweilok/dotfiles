@@ -10,10 +10,36 @@ return {
 		},
 	},
 
+	keys = { 	-- Telescope keymaps
+		{
+			"<leader>ff",
+			function()
+				require("telescope.builtin").find_files()
+			end
+		},
+		{
+			"<leader>of",
+			function()
+				require("telescope.builtin").oldfiles()
+			end
+		},
+		{
+			"<leader>lg",
+			function()
+				require("telescope.builtin").live_grep()
+			end
+		},
+		{
+			"<leader>gs",
+			function()
+				require("telescope.builtin").grep_string()
+			end
+		},
+	},
+
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local builtin = require("telescope.builtin")
 
 		telescope.setup({
 			defaults = {
@@ -37,13 +63,5 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-
-		-- Telescope keybindings
-		local keymap = vim.keymap
-
-		keymap.set("n", "<leader>ff", builtin.find_files)
-		keymap.set("n", "<leader>of", builtin.oldfiles)
-		keymap.set("n", "<leader>lg", builtin.live_grep)
-		keymap.set("n", "<leader>gs", builtin.grep_string)
 	end
 }
