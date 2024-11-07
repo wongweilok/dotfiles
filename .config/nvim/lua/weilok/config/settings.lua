@@ -1,6 +1,7 @@
--- Basic settings
 local opt = vim.opt
+local g = vim.g
 
+-- Basic settings
 opt.number = true
 opt.relativenumber = true
 opt.mouse = "a"
@@ -11,3 +12,6 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 4
 opt.shiftwidth = 4
+
+-- C header file
+g.c_syntax_for_h = 1
