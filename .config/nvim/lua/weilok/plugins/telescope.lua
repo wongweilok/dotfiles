@@ -35,6 +35,12 @@ return {
 				require("telescope.builtin").grep_string()
 			end
 		},
+		{
+			"<leader>bf",
+			function()
+				require("telescope.builtin").buffers()
+			end
+		},
 	},
 
 	config = function()
