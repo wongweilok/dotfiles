@@ -2,7 +2,7 @@ return {
 	"junegunn/goyo.vim",
 
 	keys = {
-		{ "<leader>gy", ":Goyo | set linebreak<cr>" }
+		{ "<leader>gy", ":Goyo | set linebreak<cr>", silent = true }
 	},
 
 	init = function()
