@@ -12,6 +12,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 4
 opt.shiftwidth = 4
+opt.expandtab = true
 
 -- C header file
 g.c_syntax_for_h = 1
