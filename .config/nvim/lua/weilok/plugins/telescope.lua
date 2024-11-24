@@ -30,15 +30,23 @@ return {
 			end
 		},
 		{
+			"<leader>bf",
+			function()
+				require("telescope.builtin").buffers()
+			end
+		},
+		{
 			"<leader>gs",
 			function()
 				require("telescope.builtin").grep_string()
 			end
 		},
 		{
-			"<leader>bf",
+			"<leader>gr",
 			function()
-				require("telescope.builtin").buffers()
+				require("telescope.builtin").grep_string({
+                    search = vim.fn.input("Grep > ")
+                })
 			end
 		},
 	},

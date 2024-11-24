@@ -38,5 +38,7 @@ return {
 				enable_rename = true,
 			}
 		})
+
+        vim.treesitter.language.register('php', 'blade')
 	end
 }

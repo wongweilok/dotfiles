@@ -19,8 +19,7 @@ return {
 
 		-- Nvim-tree keymaps
 		local keymap = vim.keymap
-		local api = require("nvim-tree.api")
 
-		keymap.set("n", "<leader>fe", api.tree.toggle)
+		keymap.set("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>", { silent = true })
 	end
 }

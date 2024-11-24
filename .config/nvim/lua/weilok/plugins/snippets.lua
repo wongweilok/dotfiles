@@ -12,7 +12,13 @@ return {
 
 	config = function()
 		local luasnip = require("luasnip")
+		local keymap = vim.keymap
+
 		luasnip.filetype_extend("php", { "html" })
+		luasnip.filetype_extend("blade", { "html" })
+
+		keymap.set({"i", "s"}, "<C-w>", function() luasnip.jump( 1) end, {silent = true})
+		keymap.set({"i", "s"}, "<C-b>", function() luasnip.jump(-1) end, {silent = true})
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end
