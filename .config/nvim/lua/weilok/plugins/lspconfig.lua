@@ -48,9 +48,9 @@ return {
         })
 
         vim.lsp.enable({
-            'lua_ls',
-            'ts_ls',
-            'intelephense',
+            "lua_ls",
+            "ts_ls",
+            "intelephense",
         })
 
         -- Enable completions

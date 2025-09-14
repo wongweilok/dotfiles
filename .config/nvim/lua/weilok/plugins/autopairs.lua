@@ -9,8 +9,4 @@ return {
             java = false,
         },
     },
-
-    config = function(_, opts)
-        require("nvim-autopairs").setup(opts)
-    end
 }
