@@ -18,6 +18,7 @@ return {
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			php = { "pint" },
+            blade = { "blade-formatter" },
 		},
 
 		default_format_opts = {

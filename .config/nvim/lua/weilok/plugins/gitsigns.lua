@@ -3,7 +3,9 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 
 	opts = {
-		on_attach = function(bufnr)
+        preview_config = { border = 'single' },
+
+        on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
 
 			local function map(mode, l, r, opts)

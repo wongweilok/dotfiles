@@ -13,6 +13,7 @@ opt.splitright = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
+opt.winborder = "rounded"
 
 -- C header file
 g.c_syntax_for_h = 1

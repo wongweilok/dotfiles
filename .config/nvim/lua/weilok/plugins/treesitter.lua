@@ -13,7 +13,9 @@ return {
 			"html",
 			"css",
 			"php",
+            "php_only",
 			"javascript",
+            "blade"
 		},
 
 		highlight = { enable = true },
@@ -38,7 +40,5 @@ return {
 				enable_rename = true,
 			}
 		})
-
-        vim.treesitter.language.register('php', 'blade')
 	end
 }
