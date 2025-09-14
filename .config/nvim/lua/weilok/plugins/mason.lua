@@ -1,30 +1,16 @@
 -- Mason for managing LSP servers
 return {
-	"williamboman/mason.nvim",
-	dependencies = {
-		"williamboman/mason-lspconfig.nvim"
-	},
+    "mason-org/mason.nvim",
+    opts = {
+        ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            },
 
-	config = function()
-		require("mason").setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-            		package_pending = "➜",
-            		package_uninstalled = "✗"
-				},
-
-				border = "single",
-				height = 0.8,
-			}
-		})
-
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				"ts_ls",
-				"intelephense",
-			},
-		})
-	end
+            border = "single",
+            height = 0.8,
+        }
+    }
 }

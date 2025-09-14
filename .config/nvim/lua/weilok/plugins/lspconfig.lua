@@ -8,9 +8,8 @@ return {
 		"hrsh7th/nvim-cmp",
 	},
 
+    -- Load lspconfig
 	config = function()
-		-- Load lspconfig
-		local lspconfig = require("lspconfig")
 		local keymap = vim.keymap
 
 		-- Set keymaps after language server attached to buffer
@@ -34,40 +33,27 @@ return {
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 				keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 				keymap.set("n", "<leader>lfm", function()
 					vim.lsp.buf.format { async = true }
 				end, opts)
 			end,
 		})
 
+        -- Enable language servers
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		-- Load mason-lspconfig
-		require("mason-lspconfig").setup({
-			handlers = {
-				-- Default setup for all language servers
-				function(server_name)
-					lspconfig[server_name].setup {
-						capabilities = capabilities
-					}
-				end,
+        vim.lsp.config('*', {
+            capabilities = capabilities
+        })
 
-				-- Custom setup for lua_ls
-				["lua_ls"] = function()
-					lspconfig["lua_ls"].setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-							},
-						},
-					})
-				end,
-			},
-		})
+        vim.lsp.enable({
+            'lua_ls',
+            'ts_ls',
+            'intelephense',
+        })
 
+        -- Enable completions
 		local cmp = require("cmp")
 
 		cmp.setup({
@@ -76,6 +62,11 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+
+            window = {
+                --completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
 
 			mapping = cmp.mapping.preset.insert({
 				["<C-j>"] = cmp.mapping.select_next_item(),
