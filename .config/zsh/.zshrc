@@ -1,12 +1,13 @@
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Enable git info settings to display git branch in prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:git*' formats "(%b)"
 precmd() { vcs_info }
 setopt prompt_subst
-
-# Enable colors and change prompt colors
-autoload -U colors && colors
-PS1='%B%{$fg[blue]%}[%{$fg[yellow]%}%n%{$fg[blue]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$fg[green]%}${vcs_info_msg_0_}%{$fg[blue]%}]%{$reset_color%}$%b '
 
 # Set history directory
 HISTSIZE=100000
@@ -23,6 +24,10 @@ _comp_options+=(globdots)	# Include hidden files.
 # Enable vi mode
 bindkey -v
 export KEYTIMEOUT=1
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+bindkey -M vicmd '^e' edit-command-line
 
 # Set custom keys in tab complete menu
 bindkey -M menuselect 'h' vi-backward-char
@@ -62,7 +67,20 @@ alias \
 # Alias command "nvim" as "vim" if neovim is installed.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
-# Load zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+se() { du -a $HOME/Files/uni/ | awk '{print $2}' | fzf | xargs -r $EDITOR }
+fh() { cat $HOME/.config/zsh/zsh_history | fzf }
+cpf() { cp $1 "$(find $2 -type d | fzf)" }
 
+# Load Node version manager (nvm)
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# GPG Key input
 export GPG_TTY=$(tty)
+
+# Load zsh-syntax-highlighting & p10k theme
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source $HOME/.local/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# Load p10k prompt
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
