@@ -3,12 +3,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Enable git info settings to display git branch in prompt
-autoload -Uz vcs_info
-zstyle ':vcs_info:git*' formats "(%b)"
-precmd() { vcs_info }
-setopt prompt_subst
-
 # Set history directory
 HISTSIZE=100000
 SAVEHIST=100000

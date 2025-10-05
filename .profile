@@ -3,8 +3,13 @@
 # Add ~/.local/bin to $PATH environment variable
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/.local/bin/statusbar"
+export PATH="$PATH:$HOME/.local/bin/statusbar/powerline"
+export PATH="$PATH:$HOME/.local/bin/statusbar/minimal"
 export PATH="$PATH:$HOME/.local/share/go/bin"
 export PATH="$PATH:$HOME/.local/share/cargo/bin"
+export PATH="$PATH:$HOME/.local/share/flutter/bin"
+export PATH="$PATH:$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # Set default programs
 export EDITOR="nvim"
@@ -31,10 +36,12 @@ export JDTLS_HOME="$HOME/.local/share/nvim/lsp_servers/jdtls"
 
 # Setting for Java program to respect tiling window manager
 export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export AWT_TOOLKIT=MToolkit
 
 # Manual page syntax highlighting
-export LESS=-R
+export GROFF_NO_SGR=1
+export LESS="-R"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
 export LESS_TERMCAP_me="$(printf '%b' '[0m')"
@@ -42,6 +49,12 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+
+# Password input using dmenu
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+
+# Flutter config
+export CHROME_EXECUTABLE="/opt/brave-bin/brave-browser"
 
 # Start mpd
 mpd >/dev/null 2>&1 &
