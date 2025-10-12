@@ -33,13 +33,11 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
-	if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-		echo -ne '\e[1 q'
-	elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] ||
-	     [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
-		echo -ne '\e[5 q'
-	fi
+function zle-keymap-select () {
+    case $KEYMAP in
+        vicmd) echo -ne '\e[1 q';;
+        viins|main) echo -ne '\e[5 q';;
+    esac
 }
 
 zle-line-init() {
@@ -60,6 +58,24 @@ alias \
 
 # Alias command "nvim" as "vim" if neovim is installed.
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Change directory using lf
+lfcd () {
+    tmp="$(mktemp -uq)"
+    trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
+    Lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' '^ulfcd\n'
+
+# Search history for specific commands
+bindkey '^k' history-search-backward
+bindkey '^j' history-search-forward
+bindkey -M vicmd '^k' history-search-backward
+bindkey -M vicmd '^j' history-search-forward
 
 se() { du -a $HOME/Files/uni/ | awk '{print $2}' | fzf | xargs -r $EDITOR }
 fh() { cat $HOME/.config/zsh/zsh_history | fzf }

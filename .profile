@@ -1,10 +1,7 @@
 #!/bin/sh
 
 # Add ~/.local/bin to $PATH environment variable
-export PATH="$PATH:$HOME/.local/bin/"
-export PATH="$PATH:$HOME/.local/bin/statusbar"
-export PATH="$PATH:$HOME/.local/bin/statusbar/powerline"
-export PATH="$PATH:$HOME/.local/bin/statusbar/minimal"
+export PATH="$PATH:$(find $HOME/.local/bin -type d | paste -sd ':' -)"
 export PATH="$PATH:$HOME/.local/share/go/bin"
 export PATH="$PATH:$HOME/.local/share/cargo/bin"
 export PATH="$PATH:$HOME/.local/share/flutter/bin"
@@ -50,11 +47,10 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 
-# Password input using dmenu
-export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-
-# Flutter config
-export CHROME_EXECUTABLE="/opt/brave-bin/brave-browser"
+# Others
+export BAT_THEME="gruvbox-dark"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"            # Password input using dmenu
+export CHROME_EXECUTABLE="/opt/brave-bin/brave-browser"     # Brave as chrome for Flutter dev
 
 # Start mpd
 mpd >/dev/null 2>&1 &
