@@ -48,9 +48,13 @@ return {
         })
 
         vim.lsp.enable({
+            "clangd",
             "lua_ls",
-            "ts_ls",
             "intelephense",
+            "ts_ls",
+            "html",
+            "cssls",
+            "tailwindcss",
         })
 
         -- Enable completions
@@ -64,7 +68,7 @@ return {
 			},
 
             window = {
-                --completion = cmp.config.window.bordered(),
+                completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
 
