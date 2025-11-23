@@ -7,12 +7,12 @@ local function spell()
 end
 
 -- Custom section: Display Copilot autosuggestion status
-CopilotSuggestionEnabled = true
+CopilotSuggestionEnabled = false
 local function copilot_suggestion_status()
     if CopilotSuggestionEnabled then
         return ' '
     end
-    return ''
+    return ' '
 end
 
 return {
