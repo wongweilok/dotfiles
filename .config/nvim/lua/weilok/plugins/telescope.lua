@@ -12,37 +12,37 @@ return {
 
 	keys = { 	-- Telescope keymaps
 		{
-			"<leader>ff",
+			"<leader>tff",
 			function()
 				require("telescope.builtin").find_files()
 			end
 		},
 		{
-			"<leader>of",
+			"<leader>tof",
 			function()
 				require("telescope.builtin").oldfiles()
 			end
 		},
 		{
-			"<leader>lg",
+			"<leader>tlg",
 			function()
 				require("telescope.builtin").live_grep()
 			end
 		},
 		{
-			"<leader>bf",
+			"<leader>tbf",
 			function()
 				require("telescope.builtin").buffers()
 			end
 		},
 		{
-			"<leader>gs",
+			"<leader>tgs",
 			function()
 				require("telescope.builtin").grep_string()
 			end
 		},
 		{
-			"<leader>gr",
+			"<leader>tgr",
 			function()
 				require("telescope.builtin").grep_string({
                     search = vim.fn.input("Grep > ")
