@@ -15,7 +15,9 @@ return {
 			"php",
             "php_only",
 			"javascript",
-            "blade"
+            "blade",
+            "markdown",
+            "markdown_inline"
 		},
 
 		highlight = { enable = true },
