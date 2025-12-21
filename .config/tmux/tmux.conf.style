@@ -1,0 +1,26 @@
+# Statusline settings
+FG=#ebdbb2
+GREEN=#b8bb26
+L_GREY=#928374
+D_GREY=#3c3836
+
+NF_ROUND_OPEN="#(printf '')"
+NF_ROUND_CLOSE="#(printf '')"
+
+set-option -g status-style bg=default,fg=${FG}
+set-option -g status-justify absolute-centre
+
+set-option -g status-left "\
+#[bg=default,fg=${D_GREY}]${NF_ROUND_OPEN}\
+#[bg=${D_GREY},fg=${GREEN}]#S\
+#[bg=default,fg=${D_GREY}]${NF_ROUND_CLOSE}\
+"
+
+set-option -g status-right "\
+#[bg=default,fg=${D_GREY}]${NF_ROUND_OPEN}\
+#[bg=${D_GREY},fg=cyan]#h\
+#[bg=default,fg=${D_GREY}]${NF_ROUND_CLOSE}\
+"
+
+set-option -g window-status-format "#[fg=${L_GREY}]#I:#W"
+set-option -g window-status-current-format "#I#[fg=red]:#[fg=default]#W"
