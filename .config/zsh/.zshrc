@@ -71,15 +71,15 @@ lfcd () {
 }
 bindkey -s '^o' '^ulfcd\n'
 
+# Tmux sessioniser
+bindkey -s '^f' '^utmux-sessioniser\n'
+
 # Search history for specific commands
-bindkey '^k' history-search-backward
-bindkey '^j' history-search-forward
 bindkey -M vicmd '^k' history-search-backward
 bindkey -M vicmd '^j' history-search-forward
 
 se() { du -a $HOME/Files/uni/ | awk '{print $2}' | fzf | xargs -r $EDITOR }
 fh() { cat $HOME/.config/zsh/zsh_history | fzf }
-cpf() { cp $1 "$(find $2 -type d | fzf)" }
 
 # Load Node version manager (nvm)
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
