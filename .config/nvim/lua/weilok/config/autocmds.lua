@@ -1,6 +1,7 @@
 -- Autocommands
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+local nvim_set_hl = vim.api.nvim_set_hl
 local keymap = vim.keymap
 
 -- Compile and run code
@@ -83,4 +84,12 @@ autocmd("FileType", {
 	callback = function()
 		keymap.set("n", "<leader>c", "!pdflatex % <CR>")
 	end
+})
+
+-- Highlights colors
+autocmd("ColorScheme", {
+    callback = function()
+        -- Copilot inline ghost text
+        nvim_set_hl(0, "CopilotSuggestion", { fg = "#dbbc7f", italic = true })
+    end
 })
