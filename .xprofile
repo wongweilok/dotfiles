@@ -4,8 +4,9 @@
 setWallpaper & 			# Wallpaper changing script
 xset r rate 300 50 &
 nightlight &			# Set color temperature
+picom -b
 
-autostart="pipewire xcompmgr dunst unclutter"
+autostart="dunst unclutter"
 
 for program in $autostart; do
 	"$program" &
