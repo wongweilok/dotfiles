@@ -93,3 +93,10 @@ autocmd("ColorScheme", {
         nvim_set_hl(0, "CopilotSuggestion", { fg = "#dbbc7f", italic = true })
     end
 })
+
+autocmd("FileType", {
+    pattern = { 'blade', 'javascript' },
+    callback = function()
+        vim.treesitter.start()
+    end
+})

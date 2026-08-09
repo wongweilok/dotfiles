@@ -1,46 +1,28 @@
+-- Essential parsers
+-- lua, html, css, php, php_only, javascript, blade, markdown, markdown_inline
+
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = { "VeryLazy" },
+    branch  = "main",
+    lazy = false,
     build = ":TSUpdate",
 
     dependencies = {
         "windwp/nvim-ts-autotag",
     },
 
-    opts = {
-        ensure_installed = {
-            "lua",
-            "html",
-            "css",
-            "php",
-            "php_only",
-            "javascript",
-            "blade",
-            "markdown",
-            "markdown_inline"
-        },
-
-        highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "<C-space>",
-                node_incremental = "<C-space>",
-                scope_incremental = false,
-                node_decremental = "<BS>",
-            },
-        },
-    },
-
     config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
-
         require("nvim-ts-autotag").setup({
             opts = {
                 enable_close = true,
                 enable_rename = true,
             }
         })
+
+        -- Keybind to list out installed parsers
+        local keymap = vim.keymap
+        keymap.set("n", "<leader>tsp", function()
+            vim.print(require("nvim-treesitter").get_installed())
+        end, { silent = true })
     end
 }
