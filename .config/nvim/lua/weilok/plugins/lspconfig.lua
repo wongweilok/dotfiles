@@ -10,6 +10,9 @@ return {
 
     -- Load lspconfig
 	config = function()
+        -- Disable document color
+        vim.lsp.document_color.enable(false)
+
 		local keymap = vim.keymap
 
 		-- Set keymaps after language server attached to buffer
