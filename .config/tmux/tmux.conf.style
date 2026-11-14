@@ -15,6 +15,7 @@ set-option -g status-left "\
 #[bg=${D_GREY},fg=${GREEN}]#S\
 #[bg=default,fg=${D_GREY}]${NF_ROUND_CLOSE}\
 "
+set-option -g status-left-length 50
 
 set-option -g status-right "\
 #[bg=default,fg=${D_GREY}]${NF_ROUND_OPEN}\
@@ -24,3 +25,5 @@ set-option -g status-right "\
 
 set-option -g window-status-format "#[fg=${L_GREY}]#I:#W"
 set-option -g window-status-current-format "#I#[fg=red]:#[fg=default]#W"
+
+set -g window-status-current-style "nounderscore"
